@@ -182,7 +182,7 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .pill { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 4px 11px; border-radius: 999px; border: 1px solid currentColor; }
 </style>
-<style>body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<style>[hidden]{display:none!important}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
 <body>
 <div id="gate" class="gate">
@@ -330,7 +330,7 @@
     e.preventDefault();
     gateErr.hidden = true;
     const btn = gateForm.querySelector("button"); btn.disabled = true; btn.textContent = "Membuka…";
-    const ok = await tryPw(document.getElementById("pw").value, document.getElementById("remember").checked);
+    const ok = await tryPw(document.getElementById("pw").value.trim().toLowerCase(), document.getElementById("remember").checked);
     btn.disabled = false; btn.textContent = "Buka";
     if (!ok) { gateErr.hidden = false; document.getElementById("pw").select(); }
   });
